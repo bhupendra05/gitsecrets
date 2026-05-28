@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gitsecrets"
+version = "0.1.0"
+description = "Scan git commit history for accidentally committed secrets — catches what HEAD-only scanners miss"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Bhupendra Tale", email = "bgurjar05.bg@gmail.com" }]
+keywords = ["security", "secrets", "git", "history", "scan", "api-keys", "credentials", "devsecops"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+]
+requires-python = ">=3.9"
+dependencies = ["click>=8.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-cov"]
+
+[project.urls]
+Homepage = "https://github.com/bhupendra05/gitsecrets"
+
+[project.scripts]
+gitsecrets = "gitsecrets.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gitsecrets*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
